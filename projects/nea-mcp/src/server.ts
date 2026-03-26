@@ -9,8 +9,8 @@ import * as z from 'zod';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const PORT = Number(process.env.PORT || 3000);
-const PROJECTS_ROOT = path.resolve(__dirname, '../../');
-const LENS_ROOT = path.resolve(PROJECTS_ROOT, 'json-lens-wizard');
+const MCP_ROOT = path.resolve(__dirname, '..');
+const LENS_ROOT = path.resolve(MCP_ROOT, 'domains/json-lens-wizard');
 
 function readTextSafe(p: string) {
   try {
