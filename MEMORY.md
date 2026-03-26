@@ -6,6 +6,7 @@
 - evitar explicações longas
 - sempre sugerir próximos passos
 - dar controle e visibilidade do processo
+- não repetir perguntas que já foram resolvidas operacionalmente
 
 ## Diretriz operacional central
 - canal principal = Telegram
@@ -26,6 +27,8 @@
 - implantação da Nea no OpenClaw
 - Telegram já está ativo como canal principal
 - WhatsApp e outras integrações serão tratados como camada operacional, não apenas canal
+- GitHub é parte central da operação
+- json-lens-wizard tornou-se projeto prioritário com base multi-fornecedor e mcp-server inicial
 
 ## Regra
 Registrar aprendizados relevantes, decisões duradouras, preferências e estruturas de trabalho.
