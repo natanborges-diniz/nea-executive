@@ -1,6 +1,6 @@
 {
   "name": "nea-mcp",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Servidor MCP central da Nea",
   "type": "module",
   "main": "dist/server.js",
@@ -8,6 +8,10 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "dev": "tsx src/server.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.28.0",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
