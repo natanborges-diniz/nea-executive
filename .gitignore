@@ -1,0 +1,7 @@
+
+# Generated / deps
+node_modules/
+dist/
+.env
+projects/**/node_modules/
+projects/**/dist/
