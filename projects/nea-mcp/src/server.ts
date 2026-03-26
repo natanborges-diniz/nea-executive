@@ -9,8 +9,8 @@ import * as z from 'zod';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const PORT = Number(process.env.PORT || 3000);
-const WORKSPACE = path.resolve(__dirname, '../../');
-const LENS_ROOT = path.resolve(WORKSPACE, 'projects/json-lens-wizard');
+const PROJECTS_ROOT = path.resolve(__dirname, '../../');
+const LENS_ROOT = path.resolve(PROJECTS_ROOT, 'json-lens-wizard');
 
 function readTextSafe(p: string) {
   try {
@@ -48,7 +48,7 @@ function buildServer() {
     const projectStatus = readTextSafe(path.join(LENS_ROOT, 'docs/PROJECT_STATUS.md'));
     const executivePlan = readTextSafe(path.join(LENS_ROOT, 'docs/EXECUTIVE_PLAN.md'));
     return {
-      content: [{ type: 'text', text: JSON.stringify({ projectStatus, executivePlan }) }]
+      content: [{ type: 'text', text: JSON.stringify({ projectStatus, executivePlan, lensRoot: LENS_ROOT }) }]
     };
   });
 
@@ -61,7 +61,7 @@ function buildServer() {
     const treatments = readJsonSafe(path.join(LENS_ROOT, 'data/normalized/treatments-canonical-map.json'));
     const benefits = readJsonSafe(path.join(LENS_ROOT, 'data/normalized/family-benefits-table.json'));
     return {
-      content: [{ type: 'text', text: JSON.stringify({ families, materials, treatments, benefits }) }]
+      content: [{ type: 'text', text: JSON.stringify({ families, materials, treatments, benefits, lensRoot: LENS_ROOT }) }]
     };
   });
 
@@ -74,11 +74,11 @@ function buildServer() {
     const comparison = readTextSafe(path.join(LENS_ROOT, 'docs/extraction/ESSILOR_HOYA_ZEISS_COMPARISON.md'));
     const backlog = readTextSafe(path.join(LENS_ROOT, 'docs/LOVABLE_EXECUTION_BACKLOG.md'));
     const visual = readTextSafe(path.join(LENS_ROOT, 'docs/VISUAL_COMPARISON_REQUIREMENTS.md'));
-    const payload = { comparison, backlog, visual } as Record<string, string | null>;
+    const payload = { comparison, backlog, visual, lensRoot: LENS_ROOT } as Record<string, string | null>;
     if (!kind || kind === 'all') {
       return { content: [{ type: 'text', text: JSON.stringify(payload) }] };
     }
-    return { content: [{ type: 'text', text: JSON.stringify({ [kind]: payload[kind] }) }] };
+    return { content: [{ type: 'text', text: JSON.stringify({ [kind]: payload[kind], lensRoot: LENS_ROOT }) }] };
   });
 
   return server;
